@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --brand-primary: #4f46e5;
+  }
+
+  body {
+    @apply bg-dark-950 text-gray-200 min-h-screen font-sans antialiased overflow-x-hidden transition-all duration-700;
+    background: 
+      radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.1) 0px, transparent 40%),
+      radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 35%),
+      #030303;
+  }
+
+  /* Custom selection color */
+  ::selection { @apply bg-brand-primary/40 text-white; }
+}
+
+@layer components {
+  /* GLASSMORPHISM PANEL - HIGH FIDELITY */
+  .glass {
+    @apply bg-white/[0.02] backdrop-blur-[60px] border-2 border-white/[0.04] shadow-premium rounded-[32px] overflow-hidden;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* PREMIUM DARK CARD */
+  .fin-card {
+    @apply glass flex flex-col p-10 relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)];
+  }
+
+  .premium-card {
+    @apply relative overflow-hidden rounded-[44px] transition-all duration-1000;
+  }
+
+  /* CUSTOM SCROLLBAR FOR MODERN DESIGNS */
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { @apply bg-transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-white/10 rounded-full hover:bg-brand-primary/40 transition-all border-2 border-dark-950; }
+
+  /* DROP SHADOW GLOWS */
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.8));
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+  }
+
+  .shadow-5xl {
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* CUSTOM ANIMATIONS */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* GRADIENT TEXT */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-tr from-brand-primary via-indigo-400 to-white;
+}
